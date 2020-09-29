@@ -11,6 +11,7 @@ const Rules = (props) => {
             <h4>Раунд: {props.round}</h4>
             <h4>Ход: {props.activeUnit}</h4>
             <button onClick={props.whoIsFirts}>Кто ходит первым?</button>
+            <h2>Победил: {props.winner}</h2>
         </div>
     )
 }
