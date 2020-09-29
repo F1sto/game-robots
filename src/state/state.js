@@ -5,16 +5,9 @@ let state = {
     activeUnit: '',
     winner: '--',
 
-    leftPoint: 0,
-    rightPoint: 0,
-
-    rightSuperPower: 0,
-    leftSuperPower: 0,
-   
-
     units: [
-        {name: 'Scorpion', hp: 100},
-        {name: 'Subzero', hp: 100},
+        {name: 'Scorpion', hp: 100, superPower: true, point: 0},
+        {name: 'Subzero', hp: 100, superPower: true, point: 0},
     ],
 
     skills: [
@@ -35,7 +28,7 @@ export let whoIsFirts = () => {
         state.activeUnit = firstUnit.name;
         whoFirstCounter++;
     } else {
-        alert(state.activeUnit + ' ходит первым')
+        alert(state.activeUnit + ' ходит')
     } 
     renderTree();
 }
@@ -54,28 +47,32 @@ let checkHealth = () => {
         state.round++;
     
         if (state.units[0].hp == 0) {
-            state.rightPoint++
+            state.units[1].point++
         } else {
-            state.leftPoint++
+            state.units[0].point++
         }
     
         state.units[0].hp = 100;
         state.units[1].hp = 100;
     }
     
-    if (state.leftPoint == 2) {
+    if (state.units[0].point == 2) {
         state.winner = state.units[0].name
-    } else if (state.rightPoint == 2) {
+    } else if (state.units[1].point == 2) {
             state.winner = state.units[1].name
-        } else if (state.leftPoint == 1 && state.rightPoint ==  1) {
+        } else if (state.units[0].point == 1 && state.units[1].point ==  1) {
             state.winner = 'Ничья'
     }
 
     if (state.round == 3) {
-        if (alert('Конец игры! Страница будет перезагружена')) {}
-        else window.location.reload(); 
+        setTimeout(() => reloadPage(), 1000);
     }
     renderTree();
+}
+
+let reloadPage = () => {
+    alert('Конец игры! Страница будет перезагружена')
+    window.location.reload(); 
 }
 
 
@@ -85,6 +82,12 @@ export let useSkill = (skill, unit) => {
     unit.hp -= damage;
 
     checkHealth();
+}
+
+export let emptySuperPower = (unit) => {
+    unit.superPower = false;
+
+    renderTree();
 }
 
 

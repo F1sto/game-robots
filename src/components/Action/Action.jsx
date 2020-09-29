@@ -22,7 +22,6 @@ const Action = (props) => {
         } else {
             alert('Не ваш ход')
         }
-
     }
 
     let unit2Click = (skill) => {
@@ -36,16 +35,34 @@ const Action = (props) => {
         }
     }
 
+    let unit1ClickSuper = (skill, unit) => {
+        if (unit1.superPower === true) {
+            unit1Click(skill);
+            props.emptySuperPower(unit);
+        } else {
+            alert('Вы уже использовали Супер-способность')
+        }
+    }
+
+    let unit2ClickSuper = (skill, unit) => {
+        if (unit2.superPower === true) {
+            unit2Click(skill);
+            props.emptySuperPower(unit);
+        } else {
+            alert('Вы уже использовали Супер-способность')
+        }
+    }
+
 
     return (
         <div className={classes.action}>
             <div className={classes.robot}>
                 <p className={classes.title}>{unit1.name}</p>
-                <p>Очки: {props.leftPoint}</p>
+                <p>Очки: {unit1.point}</p>
                 <div>
                     <button onClick={(e)=>unit1Click(skill[0])}>{skill[0].name}</button>
                     <button onClick={(e)=>unit1Click(skill[1])}>{skill[1].name}</button>
-                    <button onClick={(e)=>unit1Click(skill[2])}>{skill[2].name}</button>
+                    <button onClick={(e)=>unit1ClickSuper(skill[2], unit1)}>{skill[2].name}</button>
                 </div>
                 <div className={classes.helth1}>
                     <div style={{ width: redCounter1 }} className={classes.red}></div>
@@ -57,11 +74,11 @@ const Action = (props) => {
 
             <div className={classes.robot}>
                 <p className={classes.title}>{unit2.name}</p>
-                <p>Очки: {props.rightPoint}</p>
+                <p>Очки: {unit2.point}</p>
                 <div>
                     <button onClick={(e)=>unit2Click(skill[0])}>{skill[0].name}</button>
                     <button onClick={(e)=>unit2Click(skill[1])}>{skill[1].name}</button>
-                    <button onClick={(e)=>unit2Click(skill[2])}>{skill[2].name}</button>
+                    <button onClick={(e)=>unit2ClickSuper(skill[2], unit2)}>{skill[2].name}</button>
                 </div>
                 <div className={classes.helth2}>
                     <div style={{ width: redCounter2 }} className={classes.red}></div>

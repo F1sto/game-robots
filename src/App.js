@@ -15,10 +15,11 @@ const App = (props) => {
       <Action units={props.state.units}
               activeUnit={props.state.activeUnit}
               skills={props.state.skills}
-              leftPoint={props.state.leftPoint}
-              rightPoint={props.state.rightPoint}
               useSkill={props.useSkill}
               changeUnit={props.changeUnit}
+              rightSuperPower={props.rightSuperPower}
+              leftSuperPow={props.leftSuperPower}
+              emptySuperPower={props.emptySuperPower}
       />
     </div>
   );
