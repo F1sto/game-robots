@@ -1,0 +1,20 @@
+.action {
+    padding-top: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.robot {
+    padding: 0 5em;
+}
+
+.title {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.helth1, .helth2 {
+    background-color: rgb(32, 214, 41);
+}
