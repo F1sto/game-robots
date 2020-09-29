@@ -7,8 +7,13 @@ import Action from './components/Action/Action';
 const App = (props) => {
   return (
     <div className="App">
-      <Info round={props.state.round} />
-      <Action units={props.state.units} />
+      <Info round={props.state.round}
+            activeUnit={props.state.activeUnit}
+            whoIsFirts={props.whoIsFirts}
+      />
+      <Action units={props.state.units}
+              skills={props.state.skills}        
+      />
     </div>
   );
 }
