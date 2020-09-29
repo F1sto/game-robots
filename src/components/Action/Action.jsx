@@ -6,18 +6,31 @@ const Action = (props) => {
     let units = props.units;
     let unit1 = units[0];
     let unit2 = units[1];
+    let activeUnit = props.activeUnit;
 
     let skill = props.skills;
 
     let unit1Click = (skill) => {
-        let enemyUnit = props.units[1]
-        props.useSkill(skill, enemyUnit)
+        let enemyUnit = props.units[1];
+
+        if (activeUnit === unit1.name) {
+            props.useSkill(skill, enemyUnit);
+            props.changeUnit();
+        } else {
+            alert('Не ваш ход')
+        }
 
     }
 
     let unit2Click = (skill) => {
         let enemyUnit = props.units[0]
-        props.useSkill(skill, enemyUnit)
+
+        if (activeUnit === unit2.name) {
+            props.useSkill(skill, enemyUnit);
+            props.changeUnit();
+        } else {
+            alert('Не ваш ход')
+        }
     }
 
 

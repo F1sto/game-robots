@@ -13,10 +13,12 @@ const App = (props) => {
             winner={props.state.winner}
       />
       <Action units={props.state.units}
+              activeUnit={props.state.activeUnit}
               skills={props.state.skills}
               leftPoint={props.state.leftPoint}
               rightPoint={props.state.rightPoint}
               useSkill={props.useSkill}
+              changeUnit={props.changeUnit}
       />
     </div>
   );

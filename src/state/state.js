@@ -40,6 +40,14 @@ export let whoIsFirts = () => {
     renderTree();
 }
 
+export let changeUnit = () => {
+    if (state.activeUnit === state.units[0].name) {
+        state.activeUnit = state.units[1].name;
+    } else {
+        state.activeUnit = state.units[0].name
+    }
+}
+
 
 let checkHealth = () => {
     if (state.units[0].hp <= 0 || state.units[1].hp <= 0) {
