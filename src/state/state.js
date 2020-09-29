@@ -70,6 +70,11 @@ let checkHealth = () => {
         } else if (state.leftPoint == 1 && state.rightPoint ==  1) {
             state.winner = 'Ничья'
     }
+
+    if (state.round == 3) {
+        if (alert('Конец игры! Страница будет перезагружена')) {}
+        else window.location.reload(); 
+    }
     renderTree();
 }
 

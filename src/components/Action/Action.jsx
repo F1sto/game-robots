@@ -8,6 +8,9 @@ const Action = (props) => {
     let unit2 = units[1];
     let activeUnit = props.activeUnit;
 
+    let redCounter1 = (100 - unit1.hp) * 3;
+    let redCounter2 = (100 - unit2.hp) * 3;
+
     let skill = props.skills;
 
     let unit1Click = (skill) => {
@@ -44,7 +47,12 @@ const Action = (props) => {
                     <button onClick={(e)=>unit1Click(skill[1])}>{skill[1].name}</button>
                     <button onClick={(e)=>unit1Click(skill[2])}>{skill[2].name}</button>
                 </div>
-                <p className={classes.helth1}>Здоровье: {unit1.hp}</p>
+                <div className={classes.helth1}>
+                    <div style={{ width: redCounter1 }} className={classes.red}></div>
+                    <div className={classes.green}>
+                        <p className={classes.helthName}>Здоровье: {unit1.hp}</p>
+                    </div>
+                </div>
             </div>
 
             <div className={classes.robot}>
@@ -55,7 +63,12 @@ const Action = (props) => {
                     <button onClick={(e)=>unit2Click(skill[1])}>{skill[1].name}</button>
                     <button onClick={(e)=>unit2Click(skill[2])}>{skill[2].name}</button>
                 </div>
-                <p className={classes.helth2}>Здоровье: {unit2.hp}</p>
+                <div className={classes.helth2}>
+                    <div style={{ width: redCounter2 }} className={classes.red}></div>
+                    <div className={classes.green}>
+                        <p className={classes.helthName}>Здоровье: {unit2.hp}</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
